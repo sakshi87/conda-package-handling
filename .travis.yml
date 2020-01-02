@@ -3,15 +3,24 @@
 dist: xenial
 language: python
 arch:
-    - amd64
-    - arm64
+  - amd64
+  - arm64
+before_install:
+  - sudo apt-get install -y git wget
 python:
   - "2.7"
   - "3.7"
+env:
+  global:
+    - SUDO=""
 
 install:
   - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
       wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
+      chmod +x archiconda.sh;
+      bash archiconda.sh -b -p $HOME/miniconda;
+      SUDO=sudo;
+      $SUDO cp -r $HOME/miniconda/bin/* /usr/bin/;
     fi
   - wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-linux-64.exe -O conda.exe
   - chmod +x conda.exe
