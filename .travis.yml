@@ -28,7 +28,7 @@ install:
       ./conda.exe create -p $HOME/miniconda python=$TRAVIS_PYTHON_VERSION conda conda-build pytest six pytest-cov pytest-mock;
       SUDO=sudo;
     fi
-  - $SUDO export PATH="$HOME/miniconda/bin:$PATH"
+  - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
       $SUDO conda install futures;
