@@ -10,7 +10,6 @@ python:
   - "3.7"
 
 install:
-
   - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
       wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
     fi
