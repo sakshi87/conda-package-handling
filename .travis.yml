@@ -12,14 +12,6 @@ python:
 install:
   - if [ `uname -m` == 'arm64' ]; then
       wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh
-     # chmod +x archiconda.sh
-     # export CONDA_ALWAYS_YES=1
-     # ./archiconda.sh create -p $HOME/miniconda python=$TRAVIS_PYTHON_VERSION conda conda-build pytest six pytest-cov pytest-mock
-     # export PATH="$HOME/miniconda/bin:$PATH"
-     # hash -r
-     # conda build conda.recipe --no-test
-     # conda install --use-local conda-package-handling
-     # conda info -a
     fi
   - wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-linux-64.exe -O conda.exe
   - chmod +x conda.exe
