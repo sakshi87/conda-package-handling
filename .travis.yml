@@ -30,11 +30,11 @@ install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      sudo conda install futures;
+      $SUDO conda install futures;
     fi
-  - conda build conda.recipe --no-test
-  - conda install --use-local conda-package-handling
-  - conda info -a
+  - $SUDO conda build conda.recipe --no-test
+  - $SUDO conda install --use-local conda-package-handling
+  - $SUDO conda info -a
 script:
   # rebuilding the recipe with our new CPH installed tests it a bit deeper than the test suite.
   - conda build conda.recipe
