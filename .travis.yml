@@ -5,8 +5,6 @@ language: python
 arch:
   - amd64
   - arm64
-before_install:
-  - sudo apt-get install -y git wget
 python:
   - "2.7"
   - "3.7"
@@ -34,9 +32,9 @@ install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      $SUDO conda install futures;
+      conda install futures;
     fi
-  - $SUDO conda build conda.recipe --no-test
+  - conda build conda.recipe --no-test
   - $SUDO conda install --use-local conda-package-handling
   - $SUDO conda info -a
 script:
