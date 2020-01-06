@@ -16,11 +16,14 @@ env:
 
 install:
   - if [[ "${TRAVIS_CPU_ARCH}" == "arm64" ]]; then
+      SUDO=sudo;
       wget -q "https://github.com/Archiconda/build-tools/releases/download/0.2.3/Archiconda3-0.2.3-Linux-aarch64.sh" -O archiconda.sh;
       chmod +x archiconda.sh;
       export CONDA_ALWAYS_YES=1;
       bash archiconda.sh -b -p $HOME/miniconda;
-      SUDO=sudo;
+      export PATH="$HOME/miniconda/bin:$PATH";
+      $SUDO cp -r $HOME/miniconda/bin/* /usr/bin/;
+      $SUDO conda install python-3.7 conda conda-build pytest six pytest-cov pytest-mock;
     else
       wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-linux-64.exe -O conda.exe;
       chmod +x conda.exe;
