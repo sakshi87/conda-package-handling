@@ -26,7 +26,6 @@ install:
       chmod +x conda.exe;
       export CONDA_ALWAYS_YES=1;
       ./conda.exe create -p $HOME/miniconda python=$TRAVIS_PYTHON_VERSION conda conda-build pytest six pytest-cov pytest-mock;
-      SUDO=sudo;
     fi
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
@@ -34,12 +33,12 @@ install:
       conda install futures;
     fi
   - conda build conda.recipe --no-test
-  - $SUDO conda install --use-local conda-package-handling
-  - $SUDO conda info -a
+  - conda install --use-local conda-package-handling
+  - conda info -a
 script:
   # rebuilding the recipe with our new CPH installed tests it a bit deeper than the test suite.
-  - sudo conda build conda.recipe
-  - sudo pytest -v --color=yes --cov=conda_package_handling tests
+  - conda build conda.recipe
+  - pytest -v --color=yes --cov=conda_package_handling tests
 after_success:
-  - sudo conda install codecov
+  - conda install codecov
   - codecov
