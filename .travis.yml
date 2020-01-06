@@ -20,7 +20,6 @@ install:
       chmod +x archiconda.sh;
       export CONDA_ALWAYS_YES=1;
       bash archiconda.sh -b -p $HOME/miniconda;
-      python=$TRAVIS_PYTHON_VERSION conda conda-build pytest six pytest-cov pytest-mock;
     else
       wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-linux-64.exe -O conda.exe;
       chmod +x conda.exe;
