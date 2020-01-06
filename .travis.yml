@@ -20,6 +20,7 @@ install:
       chmod +x archiconda.sh;
       export CONDA_ALWAYS_YES=1;
       bash archiconda.sh -b -p $HOME/miniconda;
+      SUDO=sudo;
     else
       wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-linux-64.exe -O conda.exe;
       chmod +x conda.exe;
@@ -29,7 +30,7 @@ install:
   - export PATH="$HOME/miniconda/bin:$PATH"
   - hash -r
   - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
-      conda install futures;
+      sudo conda install futures;
     fi
   - conda build conda.recipe --no-test
   - conda install --use-local conda-package-handling
