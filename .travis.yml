@@ -40,7 +40,7 @@ install:
   - $SUDO conda info -a
 script:
   # rebuilding the recipe with our new CPH installed tests it a bit deeper than the test suite.
-  - conda build conda.recipe
+  - sudo conda build conda.recipe
   - pytest -v --color=yes --cov=conda_package_handling tests
 after_success:
   - conda install codecov
